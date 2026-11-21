@@ -64,7 +64,8 @@ curl -s https://memberplus.neyzt.org/robots.txt
 
 # La app sigue viva y sí va marcada como noindex
 curl -sI https://memberplus.neyzt.org/login | grep -E 'HTTP/|X-Robots-Tag'
-curl -s -o /dev/null -w '%{http_code}\n' https://memberplus.neyzt.org/api/v1/health
+curl -s -o /dev/null -w 'auth/me %{http_code}\n' https://memberplus.neyzt.org/api/v1/auth/me   # 401: el proxy llega al API
+curl -s -o /dev/null -w 'health %{http_code}\n' https://api-memberplus.neyzt.org/health
 
 # Un asset de la landing no debe servirse desde el frontend
 curl -s -o /dev/null -w '%{http_code}\n' https://memberplus.neyzt.org/screens/panel-es.webp
