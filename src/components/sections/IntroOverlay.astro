@@ -1,0 +1,32 @@
+---
+import type { Messages } from "@/i18n";
+
+type Props = { messages: Messages };
+
+const { messages } = Astro.props;
+const words = messages.hero.title.split(" ");
+---
+
+<div
+  id="mp-intro"
+  aria-hidden="true"
+  inert
+  class="fixed inset-0 z-60 hidden items-center bg-brand in-data-[intro]:flex"
+>
+  <div class="mx-auto w-full max-w-page px-4 sm:px-6 lg:px-8">
+    <p class="font-display text-giant font-bold tracking-display text-white">
+      {
+        words.map((word, index) => (
+          <>
+            <span class="-my-1 inline-block overflow-hidden py-1 align-bottom" data-intro-mask>
+              <span data-intro-word class="inline-block">
+                {word}
+              </span>
+            </span>
+            {index < words.length - 1 ? " " : ""}
+          </>
+        ))
+      }
+    </p>
+  </div>
+</div>

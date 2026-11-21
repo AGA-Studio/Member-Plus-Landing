@@ -1,0 +1,19 @@
+---
+import AudienceDeck from "@/islands/AudienceDeck";
+import type { Messages } from "@/i18n";
+
+type Props = { messages: Messages };
+
+const { messages } = Astro.props;
+---
+
+<section
+  id="audience"
+  aria-label={messages.audience.title}
+  data-tone="dark"
+  class="relative flex min-h-dvh items-center bg-brand-950 px-4 py-24 sm:px-6 lg:px-8"
+>
+  <div class="w-full">
+    <AudienceDeck client:visible={{ rootMargin: "300px" }} messages={messages} />
+  </div>
+</section>

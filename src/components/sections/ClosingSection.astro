@@ -1,0 +1,14 @@
+---
+import ClosingScene from "@/islands/ClosingScene";
+import { siteConfig } from "@/config/site";
+import type { Locale, Messages } from "@/i18n";
+
+type Props = { locale: Locale; messages: Messages };
+
+const { messages } = Astro.props;
+const accessHref = `mailto:${siteConfig.accessEmail}?subject=${encodeURIComponent(messages.common.requestAccessSubject)}`;
+---
+
+<section id="closing" aria-label={messages.closing.title} class="relative bg-background">
+  <ClosingScene client:visible={{ rootMargin: "600px" }} messages={messages} loginUrl={siteConfig.loginUrl} accessHref={accessHref} />
+</section>

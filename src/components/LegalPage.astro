@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/sections/Header.astro";
+import SiteFooter from "@/components/sections/SiteFooter.astro";
+import { getMessages, localePath, type Locale } from "@/i18n";
+import { legalPaths, type LegalKind } from "@/lib/routes";
+
+type Props = { locale: Locale; kind: LegalKind };
+
+const { locale, kind } = Astro.props;
+const messages = getMessages(locale);
+const legal = messages.legal;
+const content = legal[kind];
+const other: Locale = locale === "es" ? "en" : "es";
+const paths = { es: legalPaths[kind].es, en: legalPaths[kind].en };
+---
+
+<Layout locale={locale} messages={messages} title={content.metaTitle} paths={paths} noindex>
+  <Header locale={locale} messages={messages} homeHref={localePath(locale)} languageHref={paths[other]} />
+  <main id="main" class="min-h-dvh px-4 pt-32 pb-24 sm:px-6 lg:px-8">
+    <article class="mx-auto flex max-w-form flex-col gap-10">
+      <header class="flex flex-col gap-5">
+        <a
+          href={localePath(locale)}
+          class="inline-flex min-h-11 w-fit items-center text-sm font-medium text-primary-text transition-colors duration-150 ease-out hover:text-primary-hover"
+        >
+          {legal.back}
+        </a>
+        <h1 class="text-title">{content.title}</h1>
+        <div role="note" class="rounded-md bg-warning-soft px-4 py-3 text-sm text-warning-text">
+          <p class="font-semibold">{legal.pendingTitle}</p>
+          <p>{legal.pendingBody}</p>
+        </div>
+      </header>
+      {
+        content.sections.map((title) => (
+          <section class="flex flex-col gap-3">
+            <h2 class="text-heading">{title}</h2>
+            <p class="text-base text-muted">{legal.placeholder}</p>
+          </section>
+        ))
+      }
+    </article>
+  </main>
+  <SiteFooter locale={locale} messages={messages} languageHref={paths[other]} />
+</Layout>

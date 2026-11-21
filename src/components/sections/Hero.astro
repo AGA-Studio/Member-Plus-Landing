@@ -1,0 +1,55 @@
+---
+import Button from "@/components/ui/Button.astro";
+import HeroScene from "@/islands/HeroScene";
+import { siteConfig } from "@/config/site";
+import type { Messages } from "@/i18n";
+
+type Props = { messages: Messages };
+
+const { messages } = Astro.props;
+const titleWords = messages.hero.title.split(" ");
+const accessHref = `mailto:${siteConfig.accessEmail}?subject=${encodeURIComponent(messages.common.requestAccessSubject)}`;
+---
+
+<section id="hero" class="relative">
+  <HeroScene
+    client:idle
+    cardLabel={messages.hero.cardLabel}
+    tierLabel={messages.tiers.onyx}
+    businessName={messages.demo.businessName}
+    memberName={messages.demo.member}
+    code={messages.demo.code}
+    chipDetected={messages.hero.chipDetected}
+    chipRegistered={messages.hero.chipRegistered}
+    chipPoints={messages.hero.chipPoints}
+  >
+    <h1
+      class="text-display text-balance transition-translate duration-300 ease-out starting:translate-y-2"
+    >
+      {
+        titleWords.map((word, index) => (
+          <>
+            <span data-hero-word class="inline-block">
+              {word}
+            </span>
+            {index < titleWords.length - 1 ? " " : ""}
+          </>
+        ))
+      }
+    </h1>
+    <p
+      data-reveal="subtitle"
+      class="max-w-xl text-lg text-muted transition-[opacity,translate] delay-75 duration-300 ease-out starting:translate-y-2 starting:opacity-0"
+    >
+      {messages.hero.subtitle}
+    </p>
+    <div
+      data-reveal="cta"
+      class="flex flex-col gap-3 transition-[opacity,translate] delay-150 duration-300 ease-out starting:translate-y-2 starting:opacity-0 sm:flex-row"
+    >
+      <Button href={siteConfig.loginUrl} size="lg">{messages.common.login}</Button>
+      <Button href={accessHref} size="lg" variant="outline">{messages.common.requestAccess}</Button>
+    </div>
+  </HeroScene>
+  <span id="hero-end" class="sr-only"></span>
+</section>

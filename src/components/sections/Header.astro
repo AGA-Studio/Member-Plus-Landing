@@ -1,0 +1,100 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Logo from "@/components/ui/Logo.astro";
+import { languageNames, localePath, type Locale, type Messages } from "@/i18n";
+import { siteConfig } from "@/config/site";
+
+type Props = { locale: Locale; messages: Messages; homeHref?: string; languageHref?: string };
+
+const { locale, messages, homeHref, languageHref } = Astro.props;
+const home = homeHref ?? "";
+const otherLocale: Locale = locale === "es" ? "en" : "es";
+
+const accessHref = `mailto:${siteConfig.accessEmail}?subject=${encodeURIComponent(messages.common.requestAccessSubject)}`;
+
+const links = [
+  { href: `${home}#how`, label: messages.nav.how },
+  { href: `${home}#business`, label: messages.nav.business },
+  { href: `${home}#screens`, label: messages.nav.screens },
+  { href: `${home}#plans`, label: messages.nav.plans },
+];
+const ghostClass =
+  "h-11 items-center rounded-full px-3 text-sm font-medium text-muted transition-[transform,background-color,color] duration-150 ease-out hover:bg-surface-muted hover:text-foreground active:scale-97 in-data-[header=dark]:text-ink-300 in-data-[header=dark]:hover:bg-ink-800 in-data-[header=dark]:hover:text-white";
+const menuLinkClass =
+  "flex h-12 items-center rounded-md px-4 text-base font-medium text-foreground transition-colors duration-150 ease-out hover:bg-surface-muted";
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-40 px-4 pt-3 transition-[opacity,translate] duration-300 ease-out starting:-translate-y-2 starting:opacity-0 sm:px-6"
+>
+  <div
+    data-reveal="header"
+    class="mx-auto flex h-14 max-w-page items-center justify-between gap-3 rounded-full border border-border bg-surface/70 pr-1.5 pl-5 shadow-sm backdrop-blur-md transition-colors duration-200 ease-out in-data-[header=dark]:border-ink-700 in-data-[header=dark]:bg-ink-950/70"
+  >
+    <a
+      href={homeHref ?? localePath(locale)}
+      aria-label={messages.common.home}
+      data-entry-target="logo"
+      class="flex h-11 items-center transition-transform duration-150 ease-out active:scale-97"
+    >
+      <Logo alt="" class="h-6 w-auto in-data-[header=dark]:hidden" />
+      <Logo tone="dark" alt="" class="hidden h-6 w-auto in-data-[header=dark]:block" />
+    </a>
+    <nav aria-label={messages.nav.label} class="hidden items-center gap-1 lg:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="flex h-11 items-center rounded-full px-4 text-sm font-medium text-muted transition-[transform,background-color,color] duration-150 ease-out hover:bg-surface-muted hover:text-foreground active:scale-97 in-data-[header=dark]:text-ink-300 in-data-[header=dark]:hover:bg-ink-800 in-data-[header=dark]:hover:text-white"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex items-center gap-1">
+      <a
+        href={languageHref ?? localePath(otherLocale)}
+        lang={otherLocale}
+        hreflang={otherLocale}
+        data-nav="lang"
+        aria-label={`${messages.common.language}: ${languageNames[otherLocale]}`}
+        class={`hidden sm:flex ${ghostClass}`}
+      >
+        {languageNames[otherLocale]}
+      </a>
+      <a href={siteConfig.loginUrl} class={`hidden lg:flex ${ghostClass}`}>{messages.common.login}</a>
+      <Button href={accessHref} class="rounded-full">{messages.common.getAccess}</Button>
+      <button
+        type="button"
+        popovertarget="mobile-menu"
+        aria-label={messages.nav.menu}
+        class={`grid size-11 place-items-center rounded-full lg:hidden ${ghostClass}`}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" class="size-5" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    id="mobile-menu"
+    popover="auto"
+    class="fixed inset-x-4 top-20 right-4 bottom-auto left-4 m-0 h-auto w-auto origin-top scale-95 rounded-xl border border-border bg-surface p-2 text-foreground opacity-0 shadow-lg transition-[opacity,scale,display,overlay] duration-200 ease-out transition-discrete [&:popover-open]:scale-100 [&:popover-open]:opacity-100 starting:[&:popover-open]:scale-95 starting:[&:popover-open]:opacity-0 lg:hidden"
+  >
+    <nav aria-label={messages.nav.label} class="flex flex-col">
+      {links.map((link) => <a href={link.href} class={menuLinkClass}>{link.label}</a>)}
+      <a
+        href={languageHref ?? localePath(otherLocale)}
+        lang={otherLocale}
+        hreflang={otherLocale}
+        data-nav="lang"
+        aria-label={`${messages.common.language}: ${languageNames[otherLocale]}`}
+        class={`sm:hidden ${menuLinkClass}`}
+      >
+        {languageNames[otherLocale]}
+      </a>
+      <a href={siteConfig.loginUrl} class={menuLinkClass}>{messages.common.login}</a>
+    </nav>
+  </div>
+</header>

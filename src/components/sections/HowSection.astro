@@ -1,0 +1,13 @@
+---
+import CashierStory from "@/islands/CashierStory";
+import type { Locale, Messages } from "@/i18n";
+
+type Props = { locale: Locale; messages: Messages };
+
+const { locale, messages } = Astro.props;
+---
+
+<section id="how" aria-labelledby="how-title" data-tone="dark" class="relative bg-ink-950">
+  <h2 id="how-title" class="sr-only">{messages.how.title}</h2>
+  <CashierStory client:visible={{ rootMargin: "600px" }} locale={locale} messages={messages} />
+</section>

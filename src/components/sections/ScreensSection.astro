@@ -1,0 +1,12 @@
+---
+import ProductDeck from "@/islands/ProductDeck";
+import type { Locale, Messages } from "@/i18n";
+
+type Props = { locale: Locale; messages: Messages };
+
+const { locale, messages } = Astro.props;
+---
+
+<section id="screens" aria-label={messages.screens.title} data-tone="dark" class="relative bg-brand-900">
+  <ProductDeck client:visible={{ rootMargin: "600px" }} locale={locale} screens={messages.screens} />
+</section>

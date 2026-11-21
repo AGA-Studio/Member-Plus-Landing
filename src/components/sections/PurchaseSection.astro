@@ -1,0 +1,23 @@
+---
+import PurchaseScene from "@/islands/PurchaseScene";
+import type { Locale, Messages } from "@/i18n";
+
+type Props = { locale: Locale; messages: Messages };
+
+const { locale, messages } = Astro.props;
+---
+
+<section
+  id="purchase"
+  aria-label={messages.purchase.title}
+  class="relative z-10 -mt-10 flex min-h-dvh items-center rounded-t-xl bg-background px-4 py-24 sm:px-6 lg:px-8"
+>
+  <div class="w-full">
+    <PurchaseScene
+      client:visible={{ rootMargin: "300px" }}
+      locale={locale}
+      purchase={messages.purchase}
+      exampleBadge={messages.common.exampleBadge}
+    />
+  </div>
+</section>

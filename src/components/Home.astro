@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/sections/Header.astro";
+import Hero from "@/components/sections/Hero.astro";
+import HowSection from "@/components/sections/HowSection.astro";
+import PurchaseSection from "@/components/sections/PurchaseSection.astro";
+import AudienceSection from "@/components/sections/AudienceSection.astro";
+import BusinessSection from "@/components/sections/BusinessSection.astro";
+import ScreensSection from "@/components/sections/ScreensSection.astro";
+import PlansSection from "@/components/sections/PlansSection.astro";
+import ClosingSection from "@/components/sections/ClosingSection.astro";
+import IntroOverlay from "@/components/sections/IntroOverlay.astro";
+import SiteFooter from "@/components/sections/SiteFooter.astro";
+import { getMessages, type Locale } from "@/i18n";
+
+type Props = { locale: Locale };
+
+const { locale } = Astro.props;
+const messages = getMessages(locale);
+---
+
+<Layout locale={locale} messages={messages} waitForHero home>
+  <IntroOverlay messages={messages} />
+  <Header locale={locale} messages={messages} />
+  <main id="main" class="overflow-x-clip">
+    <Hero messages={messages} />
+    <HowSection locale={locale} messages={messages} />
+    <PurchaseSection locale={locale} messages={messages} />
+    <AudienceSection messages={messages} />
+    <BusinessSection locale={locale} messages={messages} />
+    <ScreensSection locale={locale} messages={messages} />
+    <PlansSection messages={messages} />
+    <ClosingSection locale={locale} messages={messages} />
+  </main>
+  <SiteFooter locale={locale} messages={messages} />
+</Layout>

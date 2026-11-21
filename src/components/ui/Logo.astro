@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import logoOnLight from "@/assets/brand/logo-on-light.png";
+import logoOnDark from "@/assets/brand/logo-on-dark.png";
+
+type Props = {
+  tone?: "light" | "dark";
+  alt: string;
+  class?: string;
+};
+
+const { tone = "light", alt, class: className } = Astro.props;
+const source = tone === "light" ? logoOnLight : logoOnDark;
+---
+
+<Image src={source} alt={alt} width={360} class={className} loading="eager" decoding="async" />

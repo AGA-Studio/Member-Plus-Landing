@@ -1,0 +1,121 @@
+---
+import "@/styles/global.css";
+import montserratLatin from "@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2?url";
+import geistLatin from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import SmoothScroll from "@/islands/SmoothScroll";
+import Logo from "@/components/ui/Logo.astro";
+import { localePath, locales, type Locale, type Messages } from "@/i18n";
+
+type Props = {
+  locale: Locale;
+  messages: Messages;
+  title?: string;
+  description?: string;
+  paths?: Record<Locale, string>;
+  noindex?: boolean;
+  waitForHero?: boolean;
+  home?: boolean;
+};
+
+const { locale, messages, title, description, paths, noindex = false, waitForHero = false, home = false } = Astro.props;
+const pathFor = (code: Locale) => paths?.[code] ?? localePath(code);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(pathFor(locale), site).toString();
+const pageTitle = title ?? messages.meta.title;
+const pageDescription = description ?? messages.meta.description;
+---
+
+<!doctype html>
+<html lang={locale} data-home={home ? "" : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        try {
+          var store = window.sessionStorage;
+          var flag = store.getItem("mp-nav");
+          store.removeItem("mp-nav");
+          var entry = performance.getEntriesByType("navigation")[0];
+          var type = entry ? entry.type : "navigate";
+          var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var isHome = root.hasAttribute("data-home");
+          var intro = isHome && !store.getItem("mp-intro") && type === "navigate" && !flag;
+          if (isHome) store.setItem("mp-intro", "1");
+          if (reduced) {
+            store.removeItem("mp-scroll");
+            return;
+          }
+          if (flag) root.setAttribute("data-veil", flag);
+          else if (intro) root.setAttribute("data-intro", "");
+          window.setTimeout(function () {
+            root.removeAttribute("data-intro");
+            root.removeAttribute("data-veil");
+          }, 7000);
+        } catch (error) {}
+      })();
+    </script>
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {
+      locales.map((code) => (
+        <link rel="alternate" hreflang={code} href={new URL(pathFor(code), site).toString()} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(pathFor("es"), site).toString()} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:locale" content={locale === "es" ? "es_MX" : "en_US"} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    {waitForHero && <link rel="expect" href="#hero-end" blocking="render" />}
+    <link rel="preload" href={montserratLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only rounded-md bg-surface px-4 py-3 text-sm font-semibold text-foreground shadow-md focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50"
+    >
+      {messages.common.skipToContent}
+    </a>
+    <div
+      id="mp-veil"
+      aria-hidden="true"
+      inert
+      class="fixed inset-0 z-60 hidden items-center justify-center bg-brand in-data-[veil]:flex data-[active]:flex"
+    >
+      <div data-veil-logo class="will-change-transform">
+        <Logo tone="dark" alt="" class="h-14 w-auto" />
+      </div>
+    </div>
+    <slot />
+    <SmoothScroll client:idle />
+    <script>
+      import "@/lib/veil";
+      import "@/lib/intro";
+    </script>
+    <script>
+      let frame = 0;
+      const update = () => {
+        frame = 0;
+        const dark = [...document.querySelectorAll("[data-tone='dark']")].some((element) => {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 40 && rect.bottom >= 40;
+        });
+        if (dark) document.documentElement.dataset.header = "dark";
+        else delete document.documentElement.dataset.header;
+      };
+      const schedule = () => {
+        if (!frame) frame = requestAnimationFrame(update);
+      };
+      window.addEventListener("scroll", schedule, { passive: true });
+      window.addEventListener("resize", schedule);
+      schedule();
+    </script>
+  </body>
+</html>

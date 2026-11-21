@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "title": "Member+ · Memberships and loyalty for your business",
+    "description": "Tiered membership cards and checkout with discounts, points and cashback. Every customer recognized, every checkout fast."
+  },
+  "common": {
+    "login": "Log in",
+    "requestAccess": "Request access",
+    "requestAccessSubject": "Request access to Member+",
+    "skipToContent": "Skip to content",
+    "language": "Language",
+    "home": "Member+, go to home",
+    "exampleBadge": "Illustrative example",
+    "exampleBusiness": "Sample business",
+    "getAccess": "Get access"
+  },
+  "tiers": {
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "onyx": "Onyx"
+  },
+  "nav": {
+    "label": "Main",
+    "how": "How it works",
+    "plans": "Plans",
+    "business": "Your business",
+    "screens": "Screens",
+    "menu": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "title": "Every customer recognized, every checkout fast.",
+    "subtitle": "Member+ gives your business tiered membership cards and checks out at the register with discounts, points and cashback in seconds.",
+    "cardLabel": "Sample membership card",
+    "chipDetected": "Card detected",
+    "chipRegistered": "Purchase registered",
+    "chipPoints": "+85 points"
+  },
+  "demo": {
+    "member": "Mariana Soto",
+    "code": "MP-K7Q4N",
+    "businessName": "Café Volcán"
+  },
+  "how": {
+    "title": "From QR to receipt in five steps",
+    "lead": "It all happens on the checkout screen, with no extra typing.",
+    "stepsLabel": "Steps",
+    "steps": {
+      "card": {
+        "title": "The card",
+        "body": "Every customer has a card with a QR code and a short code."
+      },
+      "scan": {
+        "title": "Scan",
+        "body": "The reader or the browser camera reads the QR. If it fails, type the MP-XXXXX code."
+      },
+      "recognize": {
+        "title": "Recognize",
+        "body": "You see the name and tier in large type, with validity and status."
+      },
+      "charge": {
+        "title": "Charge",
+        "body": "Enter the amount: $1,000 on the Gold tier. The 15 % discount leaves $850, and from there come 85 points and $25.50 cashback. Illustrative example."
+      },
+      "receipt": {
+        "title": "Receipt",
+        "body": "The purchase is registered and the receipt shows up in movements."
+      }
+    }
+  },
+  "purchase": {
+    "title": "Every purchase, in seconds",
+    "lead": "The discount comes first. Points and cashback are calculated on the already discounted amount.",
+    "scenario": "{amount} purchase · Gold tier",
+    "purchase": "Purchase",
+    "discount": "15 % discount",
+    "subtotal": "Total to pay",
+    "points": "Points",
+    "pointsRule": "1 point per $10",
+    "cashback": "3 % cashback",
+    "cashbackRule": "On the discounted amount",
+    "pointsUnit": "points"
+  },
+  "audience": {
+    "title": "For everyone in your business",
+    "owner": {
+      "title": "Owner or manager",
+      "body": "Set tiers, prices and benefits. Check customers and movements from your phone."
+    },
+    "cashier": {
+      "title": "Cashier",
+      "body": "Scan the card, recognize the customer and register the purchase in a few steps."
+    },
+    "customer": {
+      "title": "Customer",
+      "body": "Gets a digital card by email or link, with Google Wallet, PNG and PDF."
+    }
+  },
+  "business": {
+    "title": "Your business, only yours",
+    "lead": "Each business has its own customers, tiers, color and logo. Nobody sees another business's data.",
+    "tabsLabel": "Sample businesses",
+    "customers": "Customers",
+    "tiers": "Tiers",
+    "discount": "Discount",
+    "pointsPer": "Points per $10",
+    "cashback": "Cashback",
+    "tiersTitle": "Each business defines its tiers",
+    "tiersLead": "Four finishes: choose which ones each tier uses, with its price and benefits.",
+    "businesses": {
+      "volcan": {
+        "name": "Café Volcán",
+        "kind": "Coffee shop"
+      },
+      "fuerza": {
+        "name": "Estudio Fuerza",
+        "kind": "Gym"
+      },
+      "claro": {
+        "name": "Óptica Claro",
+        "kind": "Optical shop"
+      }
+    }
+  },
+  "screens": {
+    "title": "The product, inside",
+    "lead": "Real app screens, with fictional data.",
+    "items": {
+      "panel": "Dashboard",
+      "customers": "Customers",
+      "file": "Customer profile",
+      "tiers": "Tiers",
+      "movements": "Movements",
+      "receipt": "Receipt",
+      "card": "Digital card"
+    },
+    "descriptions": {
+      "panel": "Collected, purchases, average ticket and customers for the last 30 days.",
+      "customers": "Search, filter and spot who is about to expire.",
+      "file": "Each customer's membership, purchases and card on one screen.",
+      "tiers": "Price, discount, points and cashback for every tier.",
+      "movements": "Every registered purchase, with CSV export.",
+      "receipt": "The receipt with the breakdown and the new balance.",
+      "card": "The customer's digital card, with Google Wallet, image and PDF."
+    }
+  },
+  "plans": {
+    "title": "Plans",
+    "lead": "General description of the plans.",
+    "placeholder": {
+      "name": "Plan name",
+      "price": "—",
+      "period": "—",
+      "description": "Plan description.",
+      "feature1": "Feature 1",
+      "feature2": "Feature 2",
+      "feature3": "Feature 3",
+      "cta": "Button text",
+      "featured": "Featured"
+    }
+  },
+  "closing": {
+    "title": "Make every customer feel recognized",
+    "body": "Request access and start with your first card.",
+    "giantOne": "Recognized.",
+    "giantTwo": "Fast."
+  },
+  "product": {
+    "cashier": {
+      "header": {
+        "role": "Register",
+        "workspace": "Point of sale",
+        "signOut": "Sign out"
+      },
+      "scan": {
+        "readerConnected": "Reader connected",
+        "title": "Scan the card",
+        "subtitle": "Point the QR at the camera or the reader. If it fails, type the code.",
+        "orType": "or type the code",
+        "codeLabel": "Card code",
+        "codePlaceholder": "E.g. MP-4F7K2",
+        "search": "Find card",
+        "searching": "Searching…",
+        "errors": {
+          "empty": "Enter the card code.",
+          "notFound": "We couldn't find that card. Check the code.",
+          "unavailable": "We couldn't look up the card. Try again."
+        },
+        "scanner": {
+          "active": "Camera on",
+          "blocked": "Camera blocked",
+          "aim": "Point the QR at the camera",
+          "detected": "Card detected · Finding customer…",
+          "deniedTitle": "Camera blocked",
+          "deniedMessage": "Allow camera access or type the card code."
+        },
+        "open": "Scan card",
+        "openAnother": "Scan another card"
+      },
+      "purchase": {
+        "metaTitle": "Register purchase · Member+",
+        "title": "Register purchase",
+        "amount": "Amount",
+        "currency": "MXN",
+        "concept": "Description",
+        "optional": "(optional)",
+        "conceptPlaceholder": "E.g. Coffee and pastry",
+        "useCashback": "Use cashback balance",
+        "cashbackAvailable": "{amount} available. Only if the customer agrees.",
+        "cashbackUnavailable": "This customer has no cashback balance.",
+        "summary": {
+          "amount": "Amount",
+          "discount": "{tier} discount ({percent}%)",
+          "cashbackUsed": "Cashback balance",
+          "total": "Total to charge",
+          "pointsEarned": "Points earned",
+          "cashbackEarned": "Cashback earned",
+          "discountEmpty": "Discount"
+        },
+        "enterAmount": "Enter the amount to register the purchase.",
+        "submit": "Register purchase",
+        "registering": "Registering purchase…",
+        "errors": {
+          "invalidAmount": "Enter an amount greater than zero.",
+          "memberNotFound": "We could not find that card. Scan it again.",
+          "unavailable": "We couldn't register the purchase. Try again."
+        },
+        "inactiveNotice": {
+          "expired": "This membership has expired. You can register the purchase, but without benefits.",
+          "cancelled": "This membership is cancelled. You can register the purchase, but without benefits."
+        },
+        "member": {
+          "points": "Points",
+          "cashback": "Cashback",
+          "validity": "Valid until",
+          "status": {
+            "active": "Active",
+            "expired": "Expired",
+            "cancelled": "Cancelled"
+          },
+          "validUntil": "Valid until {date}",
+          "emptyCard": "No card",
+          "emptyTitle": "No customer",
+          "emptyDescription": "Scan a card to see their details."
+        },
+        "currencySymbol": "$",
+        "cancel": "Cancel",
+        "selectMember": "Scan a card to register the purchase.",
+        "notFoundNotice": "We couldn't find that card. Scan it again.",
+        "cashbackNoMember": "Available once you scan a card."
+      },
+      "receipt": {
+        "metaTitle": "Purchase registered · Member+",
+        "title": "Purchase registered",
+        "chargedTo": "Charged to {name}",
+        "date": "Date",
+        "customer": "Customer",
+        "concept": "Description",
+        "noConcept": "No description",
+        "amount": "Amount",
+        "discount": "{tier} discount ({percent}%)",
+        "cashbackUsed": "Cashback balance",
+        "total": "Total charged",
+        "pointsUnit": "points",
+        "pointsBalance": "Points",
+        "cashbackBalance": "Cashback",
+        "another": "Register another purchase",
+        "newBalance": "New balance",
+        "todayDate": "Today, {date}"
+      }
+    },
+    "common": {
+      "close": "Close",
+      "dismissToast": "Dismiss notice",
+      "cancel": "Cancel"
+    },
+    "toastRegistered": "Purchase registered",
+    "user": {
+      "name": "Ana Torres"
+    },
+    "concept": "Purchase"
+  },
+  "footer": {
+    "label": "Page footer",
+    "tagline": "Every customer recognized, every checkout fast.",
+    "legal": "Legal",
+    "account": "Account",
+    "contact": "Contact",
+    "support": "Support",
+    "privacy": "Privacy notice",
+    "terms": "Terms of use",
+    "madeBy": "Made by AGA Studio",
+    "copyright": "© {year} Member+",
+    "contactSubject": "Member+ contact",
+    "supportSubject": "Member+ support"
+  },
+  "legal": {
+    "pendingTitle": "Content to be defined",
+    "pendingBody": "This page already has its structure, but its text is not defined yet.",
+    "back": "Back to home",
+    "placeholder": "Content to be defined.",
+    "privacy": {
+      "metaTitle": "Privacy notice · Member+",
+      "title": "Privacy notice",
+      "sections": [
+        "Data we process",
+        "What we use it for",
+        "Who we share it with",
+        "Your rights",
+        "Contact"
+      ]
+    },
+    "terms": {
+      "metaTitle": "Terms of use · Member+",
+      "title": "Terms of use",
+      "sections": [
+        "Use of the service",
+        "Accounts and access",
+        "Responsibilities",
+        "Changes to these terms",
+        "Contact"
+      ]
+    }
+  }
+}

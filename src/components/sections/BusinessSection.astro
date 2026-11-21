@@ -1,0 +1,12 @@
+---
+import BusinessScene from "@/islands/BusinessScene";
+import type { Locale, Messages } from "@/i18n";
+
+type Props = { locale: Locale; messages: Messages };
+
+const { locale, messages } = Astro.props;
+---
+
+<section id="business" aria-label={messages.business.title} class="relative bg-surface-muted px-4 py-24 sm:px-6 lg:px-8">
+  <BusinessScene client:visible={{ rootMargin: "300px" }} locale={locale} messages={messages} />
+</section>

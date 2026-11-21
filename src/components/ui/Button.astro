@@ -1,0 +1,36 @@
+---
+import { cx } from "@/lib/cx";
+
+type Props = {
+  href: string;
+  variant?: "primary" | "outline";
+  size?: "md" | "lg";
+  class?: string;
+};
+
+const { href, variant = "primary", size = "md", class: className } = Astro.props;
+
+const variants = {
+  primary:
+    "bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active shadow-sm",
+  outline:
+    "border border-border-strong bg-surface text-foreground hover:bg-surface-muted active:bg-surface-muted",
+};
+
+const sizes = {
+  md: "h-11 px-5 text-sm",
+  lg: "h-13 px-6 text-base",
+};
+---
+
+<a
+  href={href}
+  class={cx(
+    "inline-flex items-center justify-center gap-2 rounded-md font-semibold whitespace-nowrap transition-[transform,background-color,color] duration-150 ease-out active:scale-97",
+    variants[variant],
+    sizes[size],
+    className,
+  )}
+>
+  <slot />
+</a>

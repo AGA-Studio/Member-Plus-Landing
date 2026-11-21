@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "title": "Member+ · Membresías y lealtad para tu negocio",
+    "description": "Tarjetas de membresía por nivel y cobro en caja con descuento, puntos y cashback. Cada cliente reconocido, cada cobro rápido."
+  },
+  "common": {
+    "login": "Iniciar sesión",
+    "requestAccess": "Solicitar acceso",
+    "requestAccessSubject": "Solicitar acceso a Member+",
+    "skipToContent": "Saltar al contenido",
+    "language": "Idioma",
+    "home": "Member+, ir al inicio",
+    "exampleBadge": "Ejemplo ilustrativo",
+    "exampleBusiness": "Negocio de ejemplo",
+    "getAccess": "Quiero acceso"
+  },
+  "tiers": {
+    "bronze": "Bronce",
+    "silver": "Plata",
+    "gold": "Oro",
+    "onyx": "Onyx"
+  },
+  "nav": {
+    "label": "Principal",
+    "how": "Cómo funciona",
+    "plans": "Planes",
+    "business": "Tu negocio",
+    "screens": "Pantallas",
+    "menu": "Abrir menú",
+    "menuClose": "Cerrar menú"
+  },
+  "hero": {
+    "title": "Cada cliente reconocido, cada cobro rápido.",
+    "subtitle": "Member+ le da a tu negocio tarjetas de membresía por nivel y cobra en caja con descuento, puntos y cashback en segundos.",
+    "cardLabel": "Tarjeta de membresía de ejemplo",
+    "chipDetected": "Tarjeta detectada",
+    "chipRegistered": "Compra registrada",
+    "chipPoints": "+85 puntos"
+  },
+  "demo": {
+    "member": "Mariana Soto",
+    "code": "MP-K7Q4N",
+    "businessName": "Café Volcán"
+  },
+  "how": {
+    "title": "Del QR al comprobante en cinco pasos",
+    "lead": "Todo ocurre en la pantalla de caja, sin teclear de más.",
+    "stepsLabel": "Pasos",
+    "steps": {
+      "card": {
+        "title": "La tarjeta",
+        "body": "Cada cliente tiene su tarjeta con un código QR y un código corto."
+      },
+      "scan": {
+        "title": "Escanear",
+        "body": "El lector o la cámara del navegador lee el QR. Si falla, tecleas el código MP-XXXXX."
+      },
+      "recognize": {
+        "title": "Reconocer",
+        "body": "Ves el nombre y el nivel en grande, con su vigencia y su estado."
+      },
+      "charge": {
+        "title": "Cobrar",
+        "body": "Captura el monto: $1,000 en nivel Oro. El descuento de 15 % deja $850, y de ahí salen 85 puntos y $25.50 de cashback. Ejemplo ilustrativo."
+      },
+      "receipt": {
+        "title": "Comprobante",
+        "body": "La compra queda registrada y el comprobante aparece en movimientos."
+      }
+    }
+  },
+  "purchase": {
+    "title": "Cada compra, en segundos",
+    "lead": "El descuento va primero. Los puntos y el cashback se calculan sobre el monto ya descontado.",
+    "scenario": "Compra de {amount} · nivel Oro",
+    "purchase": "Compra",
+    "discount": "Descuento 15 %",
+    "subtotal": "Total a pagar",
+    "points": "Puntos",
+    "pointsRule": "1 punto por cada $10",
+    "cashback": "Cashback 3 %",
+    "cashbackRule": "Sobre el monto descontado",
+    "pointsUnit": "puntos"
+  },
+  "audience": {
+    "title": "Para cada persona de tu negocio",
+    "owner": {
+      "title": "Dueño o gerente",
+      "body": "Define niveles, precios y beneficios. Consulta clientes y movimientos desde el celular."
+    },
+    "cashier": {
+      "title": "Empleado de caja",
+      "body": "Escanea la tarjeta, reconoce al cliente y registra la compra en pocos pasos."
+    },
+    "customer": {
+      "title": "Cliente",
+      "body": "Recibe su tarjeta digital por correo o enlace, con Google Wallet, PNG y PDF."
+    }
+  },
+  "business": {
+    "title": "Tu negocio, solo tuyo",
+    "lead": "Cada negocio tiene sus propios clientes, niveles, color y logo. Nadie ve los datos de otro negocio.",
+    "tabsLabel": "Negocios de ejemplo",
+    "customers": "Clientes",
+    "tiers": "Niveles",
+    "discount": "Descuento",
+    "pointsPer": "Puntos por cada $10",
+    "cashback": "Cashback",
+    "tiersTitle": "Cada negocio define sus niveles",
+    "tiersLead": "Cuatro acabados: elige cuáles usa cada nivel, con su precio y sus beneficios.",
+    "businesses": {
+      "volcan": {
+        "name": "Café Volcán",
+        "kind": "Cafetería"
+      },
+      "fuerza": {
+        "name": "Estudio Fuerza",
+        "kind": "Gimnasio"
+      },
+      "claro": {
+        "name": "Óptica Claro",
+        "kind": "Óptica"
+      }
+    }
+  },
+  "screens": {
+    "title": "El producto por dentro",
+    "lead": "Pantallas reales de la app, con datos ficticios.",
+    "items": {
+      "panel": "Panel",
+      "customers": "Clientes",
+      "file": "Ficha del cliente",
+      "tiers": "Niveles",
+      "movements": "Movimientos",
+      "receipt": "Comprobante",
+      "card": "Tarjeta digital"
+    },
+    "descriptions": {
+      "panel": "Cobrado, compras, ticket promedio y clientes de los últimos 30 días.",
+      "customers": "Busca, filtra y detecta quién está por vencer.",
+      "file": "La membresía, las compras y la tarjeta de cada cliente en una pantalla.",
+      "tiers": "Precio, descuento, puntos y cashback de cada nivel.",
+      "movements": "Cada compra registrada, con exportación a CSV.",
+      "receipt": "El comprobante con el desglose y el nuevo saldo.",
+      "card": "La tarjeta digital del cliente, con Google Wallet, imagen y PDF."
+    }
+  },
+  "plans": {
+    "title": "Planes",
+    "lead": "Descripción general de los planes.",
+    "placeholder": {
+      "name": "Nombre del plan",
+      "price": "—",
+      "period": "—",
+      "description": "Descripción del plan.",
+      "feature1": "Característica 1",
+      "feature2": "Característica 2",
+      "feature3": "Característica 3",
+      "cta": "Texto del botón",
+      "featured": "Destacado"
+    }
+  },
+  "closing": {
+    "title": "Que cada cliente se sienta reconocido",
+    "body": "Pide acceso y empieza con tu primera tarjeta.",
+    "giantOne": "Reconocido.",
+    "giantTwo": "Rápido."
+  },
+  "product": {
+    "cashier": {
+      "header": {
+        "role": "Caja",
+        "workspace": "Punto de cobro",
+        "signOut": "Cerrar sesión"
+      },
+      "scan": {
+        "readerConnected": "Lector conectado",
+        "title": "Escanea la tarjeta",
+        "subtitle": "Apunta el QR a la cámara o al lector. Si falla, escribe el código.",
+        "orType": "o escribe el código",
+        "codeLabel": "Código de la tarjeta",
+        "codePlaceholder": "Ej. MP-4F7K2",
+        "search": "Buscar tarjeta",
+        "searching": "Buscando…",
+        "errors": {
+          "empty": "Escribe el código de la tarjeta.",
+          "notFound": "No encontramos esa tarjeta. Revisa el código.",
+          "unavailable": "No pudimos buscar la tarjeta. Inténtalo de nuevo."
+        },
+        "scanner": {
+          "active": "Cámara activa",
+          "blocked": "Cámara bloqueada",
+          "aim": "Apunta el QR a la cámara",
+          "detected": "Tarjeta detectada · Buscando cliente…",
+          "deniedTitle": "Cámara bloqueada",
+          "deniedMessage": "Permite el acceso a la cámara o escribe el código de la tarjeta."
+        },
+        "open": "Escanear tarjeta",
+        "openAnother": "Escanear otra tarjeta"
+      },
+      "purchase": {
+        "metaTitle": "Registrar compra · Member+",
+        "title": "Registrar compra",
+        "amount": "Monto",
+        "currency": "MXN",
+        "concept": "Concepto",
+        "optional": "(opcional)",
+        "conceptPlaceholder": "Ej. Café y pan dulce",
+        "useCashback": "Usar saldo de cashback",
+        "cashbackAvailable": "{amount} disponibles. Solo si el cliente lo aprueba.",
+        "cashbackUnavailable": "Este cliente no tiene saldo de cashback.",
+        "summary": {
+          "amount": "Monto",
+          "discount": "Descuento {tier} ({percent}%)",
+          "cashbackUsed": "Saldo de cashback",
+          "total": "Total a cobrar",
+          "pointsEarned": "Puntos que gana",
+          "cashbackEarned": "Cashback que gana",
+          "discountEmpty": "Descuento"
+        },
+        "enterAmount": "Escribe el monto para registrar la compra.",
+        "submit": "Registrar compra",
+        "registering": "Registrando compra…",
+        "errors": {
+          "invalidAmount": "Escribe un monto mayor a cero.",
+          "memberNotFound": "No encontramos esa tarjeta. Vuelve a escanearla.",
+          "unavailable": "No pudimos registrar la compra. Inténtalo de nuevo."
+        },
+        "inactiveNotice": {
+          "expired": "Esta membresía venció. Puedes registrar la compra, pero sin beneficios.",
+          "cancelled": "Esta membresía está cancelada. Puedes registrar la compra, pero sin beneficios."
+        },
+        "member": {
+          "points": "Puntos",
+          "cashback": "Cashback",
+          "validity": "Vigencia",
+          "status": {
+            "active": "Activa",
+            "expired": "Vencida",
+            "cancelled": "Cancelada"
+          },
+          "validUntil": "Vigente hasta el {date}",
+          "emptyCard": "Sin tarjeta",
+          "emptyTitle": "Sin cliente",
+          "emptyDescription": "Escanea una tarjeta para ver sus datos."
+        },
+        "currencySymbol": "$",
+        "cancel": "Cancelar",
+        "selectMember": "Escanea una tarjeta para registrar la compra.",
+        "notFoundNotice": "No encontramos esa tarjeta. Escanéala de nuevo.",
+        "cashbackNoMember": "Disponible al escanear una tarjeta."
+      },
+      "receipt": {
+        "metaTitle": "Compra registrada · Member+",
+        "title": "Compra registrada",
+        "chargedTo": "Cobrado a {name}",
+        "date": "Fecha",
+        "customer": "Cliente",
+        "concept": "Concepto",
+        "noConcept": "Sin concepto",
+        "amount": "Monto",
+        "discount": "Descuento {tier} ({percent}%)",
+        "cashbackUsed": "Saldo de cashback",
+        "total": "Total cobrado",
+        "pointsUnit": "puntos",
+        "pointsBalance": "Puntos",
+        "cashbackBalance": "Cashback",
+        "another": "Registrar otra compra",
+        "newBalance": "Nuevo saldo",
+        "todayDate": "Hoy, {date}"
+      }
+    },
+    "common": {
+      "close": "Cerrar",
+      "dismissToast": "Cerrar aviso",
+      "cancel": "Cancelar"
+    },
+    "toastRegistered": "Compra registrada",
+    "user": {
+      "name": "Ana Torres"
+    },
+    "concept": "Consumo"
+  },
+  "footer": {
+    "label": "Pie de página",
+    "tagline": "Cada cliente reconocido, cada cobro rápido.",
+    "legal": "Legal",
+    "account": "Cuenta",
+    "contact": "Contacto",
+    "support": "Soporte",
+    "privacy": "Aviso de privacidad",
+    "terms": "Términos de uso",
+    "madeBy": "Hecho por AGA Studio",
+    "copyright": "© {year} Member+",
+    "contactSubject": "Contacto Member+",
+    "supportSubject": "Soporte Member+"
+  },
+  "legal": {
+    "pendingTitle": "Contenido por definir",
+    "pendingBody": "Esta página ya tiene su estructura, pero su texto todavía no está definido.",
+    "back": "Volver al inicio",
+    "placeholder": "Contenido por definir.",
+    "privacy": {
+      "metaTitle": "Aviso de privacidad · Member+",
+      "title": "Aviso de privacidad",
+      "sections": [
+        "Datos que tratamos",
+        "Para qué los usamos",
+        "Con quién los compartimos",
+        "Tus derechos",
+        "Contacto"
+      ]
+    },
+    "terms": {
+      "metaTitle": "Términos de uso · Member+",
+      "title": "Términos de uso",
+      "sections": [
+        "Uso del servicio",
+        "Cuentas y accesos",
+        "Responsabilidades",
+        "Cambios a estos términos",
+        "Contacto"
+      ]
+    }
+  }
+}

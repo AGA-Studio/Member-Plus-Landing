@@ -1,0 +1,12 @@
+---
+import PlansGrid from "@/islands/PlansGrid";
+import type { Messages } from "@/i18n";
+
+type Props = { messages: Messages };
+
+const { messages } = Astro.props;
+---
+
+<section id="plans" aria-label={messages.plans.title} class="px-4 py-24 sm:px-6 lg:px-8">
+  <PlansGrid client:visible={{ rootMargin: "300px" }} messages={messages} />
+</section>
