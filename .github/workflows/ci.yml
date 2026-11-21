@@ -1,0 +1,93 @@
+name: CI
+
+# Tipos, build y build de la imagen en cada PR y en cada push a main.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  SITE_URL: https://memberplus.neyzt.org
+
+jobs:
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Caché de node_modules
+        id: node-modules
+        uses: actions/cache@v6
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - if: steps.node-modules.outputs.cache-hit != 'true'
+        run: npm ci --no-audit --no-fund
+      # `astro sync` genera los tipos de `astro:assets` y `astro:content`; un
+      # `tsc` suelto falla en clon limpio por eso, no por el código.
+      - run: npm run typecheck
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Caché de node_modules
+        id: node-modules
+        uses: actions/cache@v6
+        with:
+          path: node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - if: steps.node-modules.outputs.cache-hit != 'true'
+        run: npm ci --no-audit --no-fund
+      - run: npm run build
+      # El dominio público entra por SITE_URL: si el canonical sale a localhost,
+      # la página publicada se indexa bajo un origen que no existe.
+      - name: Comprobar canonical, robots y sitemap
+        run: |
+          grep -q 'rel="canonical" href="https://memberplus.neyzt.org/"' dist/index.html
+          grep -q 'hreflang="en"' dist/index.html
+          grep -q 'Sitemap: https://memberplus.neyzt.org/sitemap.xml' dist/robots.txt
+          grep -q '<loc>https://memberplus.neyzt.org/</loc>' dist/sitemap.xml
+          grep -q 'noindex' dist/privacidad/index.html
+
+  docker:
+    name: docker
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: docker/setup-buildx-action@v4
+      # Solo construye: publicar y desplegar es del workflow Image, en main.
+      # Esto es la prueba de que el Dockerfile y el nginx.conf siguen sanos
+      # antes del merge.
+      - name: Construir la imagen
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: false
+          build-args: |
+            SITE_URL=${{ env.SITE_URL }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,0 +1,109 @@
+name: Image
+
+# Construye la imagen de la landing y la publica en GHCR. Coolify solo hace pull.
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+concurrency:
+  group: image-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  SITE_URL: https://memberplus.neyzt.org
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Entrar a GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # sha para rollback pinneado, la rama para seguir main, la versión en los
+      # tags v* y latest solo en la rama por defecto.
+      - name: Calcular tags
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,format=short,prefix=sha-
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Construir y publicar
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            SITE_URL=${{ env.SITE_URL }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Mergear a main DESPLIEGA: la app de Coolify apunta al tag movil
+      # `latest`, así que se le avisa con su webhook de deploy. Solo en `main`:
+      # un tag v* publica versión y no debe redisparar el deploy del mismo
+      # commit (dos runs en carrera sobre la misma app). Si el secreto no está
+      # configurado, el paso no falla, solo avisa.
+      - name: Pedir deploy a Coolify
+        if: github.ref == 'refs/heads/main'
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK" ]; then
+            echo "::notice::Sin COOLIFY_WEBHOOK configurado: la imagen quedó publicada y el deploy es manual."
+            exit 0
+          fi
+          # El token es opcional: si la URL ya trae `?api_token=...` (el webhook
+          # viejo) no hace falta cabecera, y si la app usa "auth required" sí.
+          # Mandar un Bearer vacío hace que Coolify responda 401 y tumbe el run
+          # después de haber publicado la imagen.
+          auth=()
+          if [ -n "$COOLIFY_TOKEN" ]; then
+            auth=(-H "Authorization: Bearer $COOLIFY_TOKEN")
+          fi
+          # POST, no GET: el endpoint de deploy de Coolify responde
+          # 405 {"message":"This endpoint has changed to a POST request."}
+          # si se llama con GET. El uuid y force viajan en la URL del webhook.
+          code=$(curl -sS -o /tmp/coolify.out -w '%{http_code}' --max-time 30 \
+            -X POST "${auth[@]}" -H "Content-Type: application/json" -d '{}' \
+            "$COOLIFY_WEBHOOK")
+          echo "Coolify respondió HTTP $code"
+          cat /tmp/coolify.out
+          [ "$code" -ge 200 ] && [ "$code" -lt 300 ]
+
+      - name: Resumen
+        run: |
+          {
+            echo "### Imagen publicada"
+            echo '```'
+            echo "${{ steps.meta.outputs.tags }}"
+            echo '```'
+            echo "Coolify apunta a \`latest\`: un push a main la publica y dispara el deploy."
+          } >> "$GITHUB_STEP_SUMMARY"
