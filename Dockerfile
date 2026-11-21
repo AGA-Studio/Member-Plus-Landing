@@ -1,5 +1,5 @@
 # La landing es estática: Astro compila a HTML/CSS/JS y nginx lo sirve. La
-# imagen final no lleva Node, así que pesa ~50 MB y arranca en un segundo.
+# imagen final no lleva Node, así que arranca en un segundo.
 
 FROM node:22-alpine AS build
 WORKDIR /app
