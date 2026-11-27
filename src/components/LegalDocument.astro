@@ -1,0 +1,92 @@
+---
+import LegalText from "@/components/LegalText.astro";
+
+type LegalBlock = {
+  text?: string;
+  list?: string[];
+  ordered?: boolean;
+  table?: { head: string[]; rows: string[][] };
+};
+
+type Props = { sections: { title: string; blocks: LegalBlock[] }[] };
+
+const { sections } = Astro.props;
+---
+
+{
+  sections.map((section) => (
+    <section class="flex flex-col gap-4">
+      <h2 class="text-heading">{section.title}</h2>
+      {section.blocks.map((block) => {
+        if (block.list) {
+          const List = block.ordered ? "ol" : "ul";
+
+          return (
+            <List class:list={["flex flex-col gap-2 pl-6 text-base text-muted", block.ordered ? "list-decimal" : "list-disc"]}>
+              {block.list.map((item) => (
+                <li>
+                  <LegalText text={item} />
+                </li>
+              ))}
+            </List>
+          );
+        }
+
+        if (block.table) {
+          const { head, rows } = block.table;
+
+          return (
+            <>
+              <ul class="flex flex-col gap-3 sm:hidden">
+                {rows.map(([name, ...cells]) => (
+                  <li class="flex flex-col gap-3 rounded-lg border border-border p-4">
+                    <p class="text-base font-semibold text-foreground">{name}</p>
+                    <dl class="flex flex-col gap-2">
+                      {cells.map((cell, index) => (
+                        <div class="flex flex-col gap-1">
+                          <dt class="text-xs font-semibold text-muted">{head[index + 1]}</dt>
+                          <dd class="text-sm text-foreground">{cell}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </li>
+                ))}
+              </ul>
+              <div class="hidden overflow-hidden rounded-lg border border-border sm:block">
+                <table class="w-full text-left text-sm">
+                  <thead class="bg-surface-muted text-muted">
+                    <tr>
+                      {head.map((label) => (
+                        <th scope="col" class="px-4 py-3 font-semibold">
+                          {label}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map(([name, ...cells]) => (
+                      <tr class="border-t border-border align-top">
+                        <th scope="row" class="px-4 py-3 font-semibold text-foreground">
+                          {name}
+                        </th>
+                        {cells.map((cell) => (
+                          <td class="px-4 py-3 text-foreground">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          );
+        }
+
+        return (
+          <p class="text-base text-muted">
+            <LegalText text={block.text ?? ""} />
+          </p>
+        );
+      })}
+    </section>
+  ))
+}

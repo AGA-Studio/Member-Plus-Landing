@@ -304,11 +304,198 @@
       "metaTitle": "Privacy notice · Member+",
       "title": "Privacy notice",
       "sections": [
-        "Data we process",
-        "What we use it for",
-        "Who we share it with",
-        "Your rights",
-        "Contact"
+        {
+          "title": "Who is responsible",
+          "blocks": [
+            {
+              "text": "Member+ is a membership and points system for businesses. The controller of the processing described here is **Member+**, located in **Tijuana, Baja California, Mexico**."
+            },
+            {
+              "text": "This notice applies to whoever registers a business, to the people who use the panel or the checkout, and to visitors of memberplus.neyzt.org."
+            },
+            {
+              "text": "**If you are a customer of a business that uses Member+**, that business decides which of your data it collects and why. It is the controller and must give you its own notice. Member+ only processes that data on the business's behalf."
+            }
+          ]
+        },
+        {
+          "title": "Data we process",
+          "blocks": [
+            {
+              "text": "We do not ask for sensitive personal data, card details or bank accounts. The payment shown in the application is simulated."
+            },
+            {
+              "table": {
+                "head": [
+                  "Whose",
+                  "Data"
+                ],
+                "rows": [
+                  [
+                    "Whoever registers the business or uses the panel and the checkout",
+                    "Name, email, password (stored only as an irreversible Argon2id hash), role and, if uploaded, a profile photo"
+                  ],
+                  [
+                    "The business",
+                    "Name, logo, color, plan and trial dates"
+                  ],
+                  [
+                    "Access security",
+                    "Failed sign-in attempts per email, closed sessions, IP address to limit sign-up attempts and the Cloudflare Turnstile check"
+                  ],
+                  [
+                    "Customers of the business (on its behalf)",
+                    "Name, email, phone if captured, photo if taken, card code, level, validity, purchases, points, cashback, membership payments and card deliveries"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "A customer's photo is only shown so that staff can recognize them. We do no facial recognition and process no biometric data."
+            }
+          ]
+        },
+        {
+          "title": "What we use it for",
+          "blocks": [
+            {
+              "text": "We use the data only to provide the service. These purposes are necessary for our relationship with you:"
+            },
+            {
+              "list": [
+                "Create your account and your business, and sign in.",
+                "Run memberships, checkout, points, cashback, history and reports.",
+                "Apply the business plan and its limits.",
+                "Deliver the digital card by email, link, file or Google Wallet.",
+                "Protect accounts against abusive sign-ins and sign-ups.",
+                "Answer your requests and meet legal obligations.",
+                "If the artificial intelligence assistant is available and the plan includes it, answer the administrator's questions about their business data."
+              ]
+            },
+            {
+              "text": "**We do not use your data for advertising and we do not sell it.** That is why there are no secondary purposes that require your consent. To limit the use or disclosure of your data, submit your request to **Neyzer Toledo**; if the data is needed for the service, we will tell you what would stop working."
+            }
+          ]
+        },
+        {
+          "title": "Who we share it with",
+          "blocks": [
+            {
+              "text": "We share data with providers that help us deliver the service. Some of them operate outside Mexico."
+            },
+            {
+              "table": {
+                "head": [
+                  "Provider",
+                  "What it receives",
+                  "Why"
+                ],
+                "rows": [
+                  [
+                    "Cloudflare",
+                    "Site traffic, data from your browser for the Turnstile check, and images",
+                    "Protection, site delivery and image storage"
+                  ],
+                  [
+                    "Brevo",
+                    "The customer's name and email and the link to their card",
+                    "Send the card by email"
+                  ],
+                  [
+                    "Google",
+                    "The customer's name and card code, only if saved to Google Wallet",
+                    "Create the digital pass"
+                  ],
+                  [
+                    "Backblaze",
+                    "Copies of the database and of the images",
+                    "Backups"
+                  ],
+                  [
+                    "Opencode Go (only while the AI assistant is on)",
+                    "The administrator's question and the business data it looks up, which may include customers and transactions",
+                    "Generate the answer"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Anyone with the link to a digital card can see the business, the customer's name, the code, the level, the status and the validity. Sharing that link is up to whoever has it."
+            },
+            {
+              "text": "We may also hand over data when a law or a competent authority requires it. Outside those cases and the ones the law allows without consent, we do not transfer your data without asking for your authorization."
+            }
+          ]
+        },
+        {
+          "title": "How long we keep it and how we protect it",
+          "blocks": [
+            {
+              "text": "We keep the data while the business uses Member+ and for up to **12 months** afterwards, unless a legal obligation requires longer."
+            },
+            {
+              "list": [
+                "**Cancelling a membership** deletes the customer's photo from primary storage. Their record and history are kept.",
+                "**Database backups:** made daily. A local copy is kept for 3 days and the 8 most recent copies with a second provider.",
+                "**Image backups:** a deleted image may remain in them for up to **90 days**.",
+                "**Session:** expires after 8 hours."
+              ]
+            },
+            {
+              "text": "We protect the data with encrypted connections (HTTPS), passwords that are not stored as text, separation of each business's information, a temporary lock after 5 failed sign-in attempts and private images behind links that expire in 1 hour. Metadata such as location is removed from photos. The business logo is public because it appears on cards and emails."
+            },
+            {
+              "text": "If a security breach significantly affects your rights, we will tell you immediately."
+            }
+          ]
+        },
+        {
+          "title": "Your rights",
+          "blocks": [
+            {
+              "text": "You or your legal representative may request **access, rectification, cancellation and objection** (ARCO rights) regarding your data. Submit your request in writing to **Neyzer Toledo**, who handles personal data for Member+."
+            },
+            {
+              "text": "Your request must include:"
+            },
+            {
+              "list": [
+                "Your name and an address or another way to notify you.",
+                "Documents that prove your identity or your representative's.",
+                "The data your request is about (not needed if you ask for access).",
+                "The right you want to exercise or what you are asking for.",
+                "Anything that helps locate the data."
+              ],
+              "ordered": true
+            },
+            {
+              "text": "We reply within **20 business days** at most. If your request is granted, we apply it within the **15 business days** after the reply. Each period may be extended once, for an equal period, when justified. The process is free; only reproduction, copying or shipping costs may be charged."
+            },
+            {
+              "text": "When data is cancelled, it is first blocked for the period set by law and then deleted. In some cases the law allows keeping it."
+            },
+            {
+              "text": "If you are a customer of a business, contact that business; we will help it respond. If you believe your rights were not respected, you may go to the Ministry of Anti-Corruption and Good Government (**Secretaría Anticorrupción y Buen Gobierno**)."
+            }
+          ]
+        },
+        {
+          "title": "Cookies, changes and contact",
+          "blocks": [
+            {
+              "text": "The application uses a session cookie, which the page code cannot read, and preference cookies for language and theme. The informational site keeps temporary data in your browser for its animations. We use no advertising tools."
+            },
+            {
+              "text": "We will post any change to this notice at memberplus.neyzt.org/en/privacy with its date."
+            },
+            {
+              "text": "**Contact:** Neyzer Toledo · Tijuana, Baja California, Mexico"
+            },
+            {
+              "text": "**Last updated:** November 26, 2026"
+            }
+          ]
+        }
       ]
     },
     "terms": {

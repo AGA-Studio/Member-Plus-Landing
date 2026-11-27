@@ -304,11 +304,198 @@
       "metaTitle": "Aviso de privacidad · Member+",
       "title": "Aviso de privacidad",
       "sections": [
-        "Datos que tratamos",
-        "Para qué los usamos",
-        "Con quién los compartimos",
-        "Tus derechos",
-        "Contacto"
+        {
+          "title": "Quién es responsable",
+          "blocks": [
+            {
+              "text": "Member+ es un sistema de membresías y puntos para negocios. El responsable del tratamiento descrito aquí es **Member+**, con domicilio en **Tijuana, Baja California, México**."
+            },
+            {
+              "text": "Este aviso aplica a quien registra un negocio, a las personas que usan el panel o la caja y a quien visita memberplus.neyzt.org."
+            },
+            {
+              "text": "**Si eres cliente de un negocio que usa Member+**, ese negocio decide qué datos tuyos recoge y para qué. Es el responsable y debe darte su propio aviso. Member+ solo trata esos datos por encargo del negocio."
+            }
+          ]
+        },
+        {
+          "title": "Datos que tratamos",
+          "blocks": [
+            {
+              "text": "No pedimos datos personales sensibles ni datos de tarjetas o cuentas bancarias. El pago que muestra la aplicación es simulado."
+            },
+            {
+              "table": {
+                "head": [
+                  "De quién",
+                  "Datos"
+                ],
+                "rows": [
+                  [
+                    "Quien registra el negocio o usa el panel y la caja",
+                    "Nombre, correo, contraseña (se guarda solo como huella irreversible Argon2id), rol y, si la sube, foto de perfil"
+                  ],
+                  [
+                    "El negocio",
+                    "Nombre, logo, color, plan y fechas de prueba"
+                  ],
+                  [
+                    "Seguridad del acceso",
+                    "Intentos fallidos por correo, sesiones cerradas, dirección IP para limitar intentos de registro y la verificación de Cloudflare Turnstile"
+                  ],
+                  [
+                    "Clientes del negocio (por encargo suyo)",
+                    "Nombre, correo, teléfono si se captura, foto si se toma, código de tarjeta, nivel, vigencia, compras, puntos, cashback, pagos de membresía y envíos de la tarjeta"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "La foto de un cliente sirve solo para mostrarla y que el personal lo reconozca. No hacemos reconocimiento facial ni tratamos datos biométricos."
+            }
+          ]
+        },
+        {
+          "title": "Para qué los usamos",
+          "blocks": [
+            {
+              "text": "Usamos los datos solo para prestar el servicio. Estas finalidades son necesarias para la relación contigo:"
+            },
+            {
+              "list": [
+                "Crear tu cuenta y tu negocio, e iniciar sesión.",
+                "Operar membresías, caja, puntos, cashback, historial y reportes.",
+                "Aplicar el plan del negocio y sus límites.",
+                "Entregar la tarjeta digital por correo, enlace, archivo o Google Wallet.",
+                "Proteger las cuentas contra accesos y registros abusivos.",
+                "Responder tus solicitudes y cumplir obligaciones legales.",
+                "Si el asistente de inteligencia artificial está disponible y el plan lo incluye, contestar las consultas del administrador sobre los datos de su negocio."
+              ]
+            },
+            {
+              "text": "**No usamos tus datos para publicidad ni los vendemos.** Por eso no hay finalidades secundarias que requieran tu consentimiento. Para limitar el uso o la divulgación de tus datos, presenta tu solicitud a **Neyzer Toledo**; si el dato es necesario para el servicio, te diremos qué dejaría de funcionar."
+            }
+          ]
+        },
+        {
+          "title": "Con quién los compartimos",
+          "blocks": [
+            {
+              "text": "Compartimos datos con proveedores que nos ayudan a dar el servicio. Algunos operan fuera de México."
+            },
+            {
+              "table": {
+                "head": [
+                  "Proveedor",
+                  "Qué recibe",
+                  "Para qué"
+                ],
+                "rows": [
+                  [
+                    "Cloudflare",
+                    "Tráfico del sitio, datos de tu navegador para la verificación Turnstile e imágenes",
+                    "Protección, entrega del sitio y almacenamiento de imágenes"
+                  ],
+                  [
+                    "Brevo",
+                    "Nombre y correo del cliente y el enlace de su tarjeta",
+                    "Enviar la tarjeta por correo"
+                  ],
+                  [
+                    "Google",
+                    "Nombre del cliente y código de tarjeta, solo si se guarda en Google Wallet",
+                    "Crear el pase digital"
+                  ],
+                  [
+                    "Backblaze",
+                    "Copias de la base de datos y de las imágenes",
+                    "Respaldos"
+                  ],
+                  [
+                    "Opencode Go (solo con el asistente de IA activo)",
+                    "La pregunta del administrador y los datos del negocio que se consulten, que pueden incluir clientes y movimientos",
+                    "Generar la respuesta"
+                  ]
+                ]
+              }
+            },
+            {
+              "text": "Quien tenga el enlace de una tarjeta digital puede ver el negocio, el nombre del cliente, el código, el nivel, el estado y la vigencia. Compartir ese enlace es decisión de quien lo tiene."
+            },
+            {
+              "text": "También podemos entregar datos cuando una ley o una autoridad competente lo exija. Fuera de esos casos y de los que la ley permite sin consentimiento, no transferimos tus datos sin pedirte autorización."
+            }
+          ]
+        },
+        {
+          "title": "Cuánto los conservamos y cómo los protegemos",
+          "blocks": [
+            {
+              "text": "Conservamos los datos mientras el negocio use Member+ y hasta **12 meses** después, salvo que una obligación legal exija más tiempo."
+            },
+            {
+              "list": [
+                "**Cancelar una membresía** borra la foto del cliente del almacenamiento principal. Su registro e historial se conservan.",
+                "**Respaldos de la base de datos:** se hacen a diario. Se guarda una copia local por 3 días y las 8 copias más recientes en un segundo proveedor.",
+                "**Respaldos de imágenes:** una imagen borrada puede permanecer en ellos hasta **90 días**.",
+                "**Sesión:** caduca a las 8 horas."
+              ]
+            },
+            {
+              "text": "Protegemos los datos con conexiones cifradas (HTTPS), contraseñas que no se guardan en texto, separación de la información de cada negocio, bloqueo temporal tras 5 intentos fallidos de acceso e imágenes privadas con enlaces que caducan en 1 hora. A las fotos se les quitan los metadatos, como la ubicación. El logo del negocio es público porque aparece en tarjetas y correos."
+            },
+            {
+              "text": "Si una vulneración de seguridad afecta de forma significativa tus derechos, te avisaremos de inmediato."
+            }
+          ]
+        },
+        {
+          "title": "Tus derechos",
+          "blocks": [
+            {
+              "text": "Puedes pedir **acceso, rectificación, cancelación y oposición** (derechos ARCO) sobre tus datos, tú o tu representante legal. Presenta tu solicitud por escrito a **Neyzer Toledo**, responsable de datos personales de Member+."
+            },
+            {
+              "text": "Tu solicitud debe incluir:"
+            },
+            {
+              "list": [
+                "Tu nombre y un domicilio u otro medio para avisarte.",
+                "Documentos que acrediten tu identidad o la de tu representante.",
+                "Los datos sobre los que pides algo (no hace falta si pides acceso).",
+                "El derecho que quieres ejercer o lo que solicitas.",
+                "Cualquier cosa que ayude a localizar los datos."
+              ],
+              "ordered": true
+            },
+            {
+              "text": "Respondemos en un máximo de **20 días hábiles**. Si procede, lo aplicamos dentro de los **15 días hábiles** siguientes a la respuesta. Cada plazo puede ampliarse una sola vez por un periodo igual cuando se justifique. El trámite es gratuito; solo pueden cobrarse costos de reproducción, copias o envío."
+            },
+            {
+              "text": "Al cancelar un dato, primero queda bloqueado durante el periodo que marca la ley y después se suprime. En algunos casos la ley permite conservarlo."
+            },
+            {
+              "text": "Si eres cliente de un negocio, dirígete a ese negocio; le ayudaremos a atenderte. Si consideras que no se respetaron tus derechos, puedes acudir a la **Secretaría Anticorrupción y Buen Gobierno**."
+            }
+          ]
+        },
+        {
+          "title": "Cookies, cambios y contacto",
+          "blocks": [
+            {
+              "text": "La aplicación usa una cookie de sesión, que el código de la página no puede leer, y cookies de preferencia para el idioma y el tema. El sitio informativo guarda datos temporales en tu navegador para sus animaciones. No usamos herramientas de publicidad."
+            },
+            {
+              "text": "Publicaremos cualquier cambio a este aviso en memberplus.neyzt.org/privacidad con su fecha."
+            },
+            {
+              "text": "**Contacto:** Neyzer Toledo · Tijuana, Baja California, México"
+            },
+            {
+              "text": "**Última actualización:** 26 de noviembre de 2026"
+            }
+          ]
+        }
       ]
     },
     "terms": {

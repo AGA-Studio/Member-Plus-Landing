@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/sections/Header.astro";
 import SiteFooter from "@/components/sections/SiteFooter.astro";
+import LegalDocument from "@/components/LegalDocument.astro";
 import { getMessages, localePath, type Locale } from "@/i18n";
 import { legalPaths, type LegalKind } from "@/lib/routes";
 
@@ -27,18 +28,26 @@ const paths = { es: legalPaths[kind].es, en: legalPaths[kind].en };
           {legal.back}
         </a>
         <h1 class="text-title">{content.title}</h1>
-        <div role="note" class="rounded-md bg-warning-soft px-4 py-3 text-sm text-warning-text">
-          <p class="font-semibold">{legal.pendingTitle}</p>
-          <p>{legal.pendingBody}</p>
-        </div>
+        {
+          kind === "terms" && (
+            <div role="note" class="rounded-md bg-warning-soft px-4 py-3 text-sm text-warning-text">
+              <p class="font-semibold">{legal.pendingTitle}</p>
+              <p>{legal.pendingBody}</p>
+            </div>
+          )
+        }
       </header>
       {
-        content.sections.map((title) => (
-          <section class="flex flex-col gap-3">
-            <h2 class="text-heading">{title}</h2>
-            <p class="text-base text-muted">{legal.placeholder}</p>
-          </section>
-        ))
+        kind === "privacy" ? (
+          <LegalDocument sections={legal.privacy.sections} />
+        ) : (
+          legal.terms.sections.map((title) => (
+            <section class="flex flex-col gap-3">
+              <h2 class="text-heading">{title}</h2>
+              <p class="text-base text-muted">{legal.placeholder}</p>
+            </section>
+          ))
+        )
       }
     </article>
   </main>
